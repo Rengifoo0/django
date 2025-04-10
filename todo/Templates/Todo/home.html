@@ -1,19 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo APP</title>
-</head>
-<body>
-    {% extends "todo/layout.html" %}
-    {% block content %}
-    <h1>Lista de Tareas</h1>
-    <ul>
-        {% for tarea in tareas %}
-            <li>{{ tarea }}</li>
-        {% endfor %}
-    </ul>
-{% endblock %}
+{% extends 'todo/layout.html' %}
+{% block content %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tarea</th>
+            <th scope="col">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+            
+                {% for tarea in tareas %}
+                <tr>
+                    <th scope="row">{{ tarea.id}}</th>
+                    </th>
+                    <td>{{ tarea }}</td>
+                    <td>
+                        <a class="btn btn-danger btn-sm" href="{% url 'eliminar' tarea.id %}">Eliminar</a>
+                        <a class="btn btn-primary  btn-sm" href="{% url 'editar' tarea.id %}">editar</button>
+                    </td>
+                </tr>
+                {% endfor %}
+
+         </tbody>
+      </table>
 </body>
 </html>
+{% endblock %}x
